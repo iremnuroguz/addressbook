@@ -1,0 +1,84 @@
+﻿@using AddressBook.Models.Entity
+@model List<Registration>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Fotoğraf</th>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>Telefon 1</th>
+        <th>Telefon 2</th>
+        <th>Mail 1</th>
+        <th>Mail 2</th>
+        <th>Adres 1</th>
+        <th>Adres 2</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var kayit in Model)
+        {
+            <tr>
+                @if (kayit.Image != null)
+                {
+                    var Base64 = Convert.ToBase64String(kayit.Image);
+                    var Image = string.Format("data:image/gif;base64,{0}", Base64);
+                    <td><img src="@Image" class="img-thumbnail" width="128" height="128" /></td>
+                }
+                else
+                {
+                    <td>
+                        Fotoğraf Yok
+                    </td>
+                }
+                <td>@kayit.Name</td>
+                <td>@kayit.Surname</td>
+                <td>@kayit.Phone1</td>
+                @if (!string.IsNullOrEmpty(kayit.Phone2))
+                {
+                    <td>
+                        @kayit.Phone2
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Kayıt Yok
+                    </td>
+                }
+                <td>@kayit.Mail1</td>
+                @if (!string.IsNullOrEmpty(kayit.Mail2))
+                {
+                    <td>
+                        @kayit.Mail2
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Kayıt Yok
+                    </td>
+                }
+                <td>@kayit.Adress1</td>
+                @if (!string.IsNullOrEmpty(kayit.Adress2))
+                {
+                    <td>
+                        @kayit.Adress2
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Kayıt Yok
+                    </td>
+                }
+                <td><a href="/Registration/Delete/@kayit.Id" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Registration/Update/@kayit.Id" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Registration/Add/" class="btn btn-primary">YENİ KAYIT EKLE</a>

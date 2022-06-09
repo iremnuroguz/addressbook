@@ -1,0 +1,57 @@
+﻿@model AddressBook.Models.Entity.Registration
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Add", "Registration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group">
+        <div>
+            <table class="table-bordered">
+                <tr>
+                    <th>Fotoğraf</th>
+                    <td>
+                        @Html.TextBox("file", "", new { type = "file", @class = "form-control" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <th>İsim</th>
+                    <td><input type="text" class="form-control" name="Name" /></td>
+                </tr>
+                <tr>
+                    <th>Soyisim</th>
+                    <td><input type="text" class="form-control" name="Surname" /></td>
+                </tr>
+                <tr>
+                    <th>Telefon 1</th>
+                    <td><input type="text" class="form-control" name="Phone1" /></td>
+                </tr>
+                <tr>
+                    <th>Telefon 2</th>
+                    <td><input type="text" class="form-control" name="Phone2" /></td>
+                </tr>
+                <tr>
+                    <th>Mail 1</th>
+                    <td><input type="email" class="form-control" name="Mail1" /></td>
+                </tr>
+                <tr>
+                    <th>Mail 2</th>
+                    <td><input type="email" class="form-control" name="Mail2" /></td>
+                </tr>
+                <tr>
+                    <th>Adres 1</th>
+                    <td><input type="text" class="form-control" name="Adress1" /></td>
+                </tr>
+                <tr>
+                    <th>Adres 2</th>
+                    <td><input type="text" class="form-control" name="Adress2" /></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Yeni Kayıt Ekle</button>
+        </div>
+    </form>
+}

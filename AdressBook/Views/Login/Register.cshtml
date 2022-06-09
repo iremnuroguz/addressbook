@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Kayıt Ol</div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+                        {
+
+                            <div class="form-group row">
+                                @Html.ValidationSummary()
+                                @if (ViewBag.Userchecked != null)
+                                {
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">@ViewBag.Userchecked</label>
+                                }
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">İsim</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="Name" class="form-control" name="Name" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Soyisim</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="Surname" class="form-control" name="Surname" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Posta</label>
+                                <div class="col-md-6">
+                                    <input type="email" id="Mail" class="form-control" name="Mail" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Kullanıcı Adı</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="Username" class="form-control" name="Username" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Şifre</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="Password" class="form-control" name="Password" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Kayıt Ol
+                                </button>
+                                <a href="/Login/Login/" class="btn btn-link">
+                                    Giriş
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

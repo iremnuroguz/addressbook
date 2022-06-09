@@ -1,0 +1,44 @@
+﻿@model AddressBook.Models.ViewModel.ContactModel
+@{
+    ViewBag.Title = "Help";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Help", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <form class="form-group">
+        <div>
+            <table class="table-bordered">
+                <tr>
+                    <th>İsim</th>
+                    <td><input type="text" class="form-control" required name="Name" /></td>
+                </tr>
+                <tr>
+                    <th>Soyisim</th>
+                    <td><input type="text" class="form-control" required name="Surname" /></td>
+                </tr>
+
+                <tr>
+                    <th>Mail</th>
+                    <td><input type="email" class="form-control" required name="Mail" /></td>
+                </tr>
+
+                <tr>
+                    <th>Konu</th>
+                    <td><input type="text" class="form-control" required name="Subject" /></td>
+                </tr>
+
+                <tr>
+                    <th>Mesaj</th>
+                    <td><textarea class="form-control" required name="Message"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Mail Gönder</button>
+        </div>
+    </form>
+}
